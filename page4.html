@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Downloadable Files & Links</title>
+    <style>
+        /* CSS Variables for easy customization */
+        :root {
+            --background-color: #f0f8ff; /* Light background */
+            --primary-color: #004d40;    /* Text color */
+            --accent-color: #00acc1;      /* Accent color */
+            --icon-color: #00acc1;        /* Icon color */
+            --button-hover-bg: #00796b;   /* Button hover color */
+            --gallery-border-color: #00acc1; /* Border color for the gallery */
+            --gallery-background-color: #fff; /* Gallery background color */
+        }
+
+        body {
+            background-color: var(--background-color);
+            color: var(--primary-color);
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            text-align: center;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 20px;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        header p {
+            margin-top: 10px;
+            color: #e0f7fa;
+            font-size: 1.1rem;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 80vh;
+            text-align: center;
+        }
+
+        /* Scrollable gallery container */
+        .gallery {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            max-width: 1200px;
+            margin-top: 20px;
+            overflow-y: auto;
+            max-height: 70vh;
+            padding: 20px;
+            border: 3px solid var(--gallery-border-color);
+            border-radius: 10px;
+            background-color: var(--gallery-background-color);
+            width: 100%;
+        }
+
+        .gallery a {
+            display: block;
+            font-size: 1.1rem;
+            color: var(--accent-color);
+            text-decoration: none;
+            margin-top: 10px;
+        }
+
+        .caption {
+            font-size: 1rem;
+            margin-top: 5px;
+            color: var(--primary-color);
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Downloadable Files & Links</h1>
+        <p>Here you can find useful downloadable files and external links with descriptions.</p>
+    </header>
+
+    <div class="container">
+        <!-- Gallery for downloadable files and links -->
+        <div class="gallery" id="gallery">
+            <!-- Add your downloadable files and links below -->
+
+            <!-- Example of a downloadable file -->
+            <a href="https://example.com/downloads/myfile.pdf" download>Download My PDF File</a>
+            <div class="caption">This is a PDF file that contains important information.</div>
+
+            <!-- Example of an external link -->
+            <a href="https://example.com" target="_blank">Visit Example Website</a>
+            <div class="caption">This link leads to an external website with additional resources.</div>
+
+            <!-- Add more files or links here -->
+
+        </div>
+    </div>
+
+</body>
+</html>

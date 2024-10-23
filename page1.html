@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media Gallery with Captions</title>
+    <style>
+        /* CSS Variables for easy customization */
+        :root {
+            --background-color: #f0f8ff; /* Light background */
+            --primary-color: #004d40;    /* Text color */
+            --accent-color: #00acc1;      /* Accent color */
+            --icon-color: #00acc1;        /* Icon color */
+            --button-hover-bg: #00796b;   /* Button hover color */
+            --gallery-border-color: #00acc1; /* Border color for the gallery */
+            --gallery-background-color: #fff; /* Gallery background color */
+        }
+
+        body {
+            background-color: var(--background-color);
+            color: var(--primary-color);
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            text-align: center;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 20px;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        header p {
+            margin-top: 10px;
+            color: #e0f7fa;
+            font-size: 1.1rem;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 80vh;
+            text-align: center;
+        }
+
+        /* Scrollable gallery container */
+        .gallery {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            max-width: 1200px;
+            margin-top: 20px;
+            overflow-y: auto;
+            max-height: 70vh;
+            padding: 20px;
+            border: 3px solid var(--gallery-border-color);
+            border-radius: 10px;
+            background-color: var(--gallery-background-color);
+            width: 100%;
+        }
+
+        /* Larger media styling */
+        .gallery img,
+        .gallery video {
+            width: 100%; /* Adjust to fill the entire screen width */
+            height: auto; /* Maintain aspect ratio */
+            border-radius: 10px;
+            object-fit: cover;
+        }
+
+        .caption {
+            font-size: 1rem;
+            margin-top: 5px;
+            color: var(--primary-color);
+        }
+
+        /* Upload "+" icon fixed at the top right corner */
+        .upload-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 2px solid var(--icon-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            color: var(--icon-color);
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            position: fixed;
+            top: 15px;
+            right: 20px;
+            z-index: 1000; /* Ensure the icon stays on top */
+            background-color: var(--gallery-background-color);
+        }
+
+        .upload-icon:hover {
+            background-color: var(--button-hover-bg);
+            color: white;
+        }
+
+        input[type="file"] {
+            display: none;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Media Gallery with Captions</h1>
+        <p>Upload images and videos, and provide captions for each. Your media will appear below for easy viewing.</p>
+    </header>
+
+    <div class="container">
+        <!-- Gallery container with relative position for the upload icon -->
+        <div class="gallery-container">
+            <!-- Small upload icon at the top right corner -->
+            <label class="upload-icon" for="file-input">+</label>
+            <input type="file" id="file-input" accept="image/*,video/*">
+            
+            <!-- Scrollable gallery -->
+            <div class="gallery" id="gallery">
+                <!-- Media with captions will be dynamically added here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const fileInput = document.getElementById('file-input');
+        const gallery = document.getElementById('gallery');
+
+        fileInput.addEventListener('change', function(event) {
+            const files = event.target.files;
+            if (files.length > 0) {
+                const file = files[0];
+                const mediaContainer = document.createElement('div'); // Container for media and caption
+
+                let mediaElement;
+                if (file.type.startsWith('image/')) {
+                    mediaElement = document.createElement('img');
+                    mediaElement.src = URL.createObjectURL(file);  // Create image URL from selected file
+                } else if (file.type.startsWith('video/')) {
+                    mediaElement = document.createElement('video');
+                    mediaElement.src = URL.createObjectURL(file);  // Create video URL from selected file
+                    mediaElement.controls = true; // Enable video controls (play, pause, etc.)
+                }
+
+                mediaElement.onload = () => {
+                    URL.revokeObjectURL(mediaElement.src); // Release memory once media is loaded
+                };
+
+                // Prompt the user for a caption after selecting the media
+                const caption = prompt("Enter a caption for the media:");
+                const captionElement = document.createElement('div');
+                captionElement.classList.add('caption');
+                captionElement.innerText = caption || 'No caption'; // Display caption or fallback to 'No caption'
+
+                mediaContainer.appendChild(mediaElement);
+                mediaContainer.appendChild(captionElement);
+                gallery.appendChild(mediaContainer); // Append the media and caption to the gallery
+            }
+        });
+    </script>
+
+</body>
+</html>
