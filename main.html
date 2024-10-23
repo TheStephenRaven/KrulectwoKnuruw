@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Button Page with Hover Effects</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet"> <!-- Modern font -->
+    <style>
+        /* Editable settings */
+        :root {
+            --background-image: url('https://i.imgur.com/iudWBnc.png'); /* Higher resolution background image URL */
+            --btn1-image: url('https://cdn-bkmnk.nitrocdn.com/tTlhxzzMmimCNDhmBMPSfXzXyzJRFPSL/assets/images/optimized/rev-1d82144/www.lauvette.ph/wp-content/uploads/2021/09/Sex-Dungeon-1.jpg'); /* Button 1 image */
+            --btn2-image: url('https://i.pinimg.com/736x/cd/58/03/cd5803f4af1df1ce5930616003517bf1.jpg?w=800&h=800'); /* Button 2 image */
+            --btn3-image: url('https://www.forfiterexclusive.pl/media/catalog/product/cache/d5afe4027f6327c4166894dbe0f47382/f/i/finlandia_cranberry_37_5_.jpg?w=800&h=800'); /* Button 3 image */
+            --btn4-image: url('https://img.freepik.com/free-vector/swamp-forest-composition-outdoor-wild-scenery-with-silhouettes-trees-sky-marsh-with-plants-vector-illustration_1284-82632.jpg?w=800&h=800'); /* Button 4 image */
+            --btn5-image: url('https://printler.com/media/photo/176416.jpg?w=800&h=800'); /* Button 5 image */
+            --heading-text: 'Zjednoczone Krulectwo Dzikih Knuruw'; /* Main heading text */
+            --sub-text: 'Pik Jor Pojszyn'; /* Subheading text */
+            --label1: 'Piwnica Kusiowej'; /* Button 1 label */
+            --label2: 'Dach Gomuły'; /* Button 2 label */
+            --label3: 'Finlandia'; /* Button 3 label */
+            --label4: 'Bydgoszcz'; /* Button 4 label */
+            --label5: '18+ :3'; /* Button 5 label */
+            --heading-color: green; /* Heading text color */
+            --subheading-color: pink; /* Subheading text color */
+            --label1-color: red; /* Label 1 text color */
+            --label2-color: purple; /* Label 2 text color */
+            --label3-color: yellow; /* Label 3 text color */
+            --label4-color: green; /* Label 4 text color */
+            --label5-color: pink; /* Label 5 text color */
+            --heading-margin-top: 10px; /* Margin-top for heading */
+            --heading-margin-bottom: 150px; /* Margin-bottom for heading */
+            --subheading-margin-bottom: 40px; /* Margin-bottom for subheading */
+            --button-gap: 20px; /* Gap between buttons */
+        }
+
+        body {
+            background: var(--background-image) no-repeat center center fixed;
+            background-size: cover;
+            font-family: 'Roboto', sans-serif; /* Modern font */
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            text-align: center;
+            padding: 20px; /* Add padding to container */
+        }
+
+        h1, h2 {
+            font-weight: bold;
+            color: var(--heading-color);
+            text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.9); /* Stronger text outline */
+            margin: 0;
+            background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+            padding: 10px 20px; /* Padding inside the background */
+            border-radius: 10px; /* Rounded corners */
+        }
+
+        h1 {
+            font-size: 3.5em; /* Larger font size for main heading */
+            margin-top: var(--heading-margin-top); /* Adjustable margin-top */
+            margin-bottom: var(--heading-margin-bottom); /* Adjustable margin-bottom */
+        }
+
+        h2 {
+            font-size: 2.5em; /* Larger font size for subheading */
+            color: var(--subheading-color);
+            margin-bottom: var(--subheading-margin-bottom); /* Adjustable margin-bottom */
+        }
+
+        .buttons-container {
+            display: flex;
+            justify-content: center;
+            gap: var(--button-gap); /* Adjustable gap between buttons */
+            margin: 20px 0;
+        }
+
+        .button-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        button {
+            background-color: transparent;
+            border: none;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background-size: cover;
+            background-position: center;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        button:hover {
+            transform: scale(1.1); /* Scale button on hover */
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3); /* Add shadow */
+        }
+
+        .button-wrapper:hover label {
+            transform: scale(1.1); /* Scale label on hover */
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3); /* Add shadow */
+        }
+
+        /* Button images */
+        #btn1 {
+            background-image: var(--btn1-image);
+        }
+
+        #btn2 {
+            background-image: var(--btn2-image);
+        }
+
+        #btn3 {
+            background-image: var(--btn3-image);
+        }
+
+        #btn4 {
+            background-image: var(--btn4-image);
+        }
+
+        #btn5 {
+            background-image: var(--btn5-image);
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+            font-size: 20px; /* Larger font size for labels */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Stronger text outline */
+            background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+            padding: 5px 10px; /* Padding inside the background */
+            border-radius: 5px; /* Rounded corners */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        #label1 {
+            color: var(--label1-color);
+        }
+
+        #label2 {
+            color: var(--label2-color);
+        }
+
+        #label3 {
+            color: var(--label3-color);
+        }
+
+        #label4 {
+            color: var(--label4-color);
+        }
+
+        #label5 {
+            color: var(--label5-color);
+        }
+
+        /* Links to make buttons clickable */
+        a {
+            text-decoration: none;
+        }
+
+        a > button {
+            border: none;
+            outline: none;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 id="main-heading"></h1>
+        <h2 id="sub-heading"></h2>
+
+        <div class="buttons-container">
+            <div class="button-wrapper">
+                <a href="file:///D:/Website/Pages/page1.html"><button id="btn1"></button></a> <!-- Link to Page 1 -->
+                <label for="btn1" id="label1"></label>
+            </div>
+            <div class="button-wrapper">
+                <a href="file:///D:/Website/Pages/page2.html"><button id="btn2"></button></a> <!-- Link to Page 2 -->
+                <label for="btn2" id="label2"></label>
+            </div>
+            <div class="button-wrapper">
+                <a href="file:///D:/Website/Pages/page3.html"><button id="btn3"></button></a> <!-- Link to Page 3 -->
+                <label for="btn3" id="label3"></label>
+            </div>
+            <div class="button-wrapper">
+                <a href="file:///D:/Website/Pages/page4.html"><button id="btn4"></button></a> <!-- Link to Page 4 -->
+                <label for="btn4" id="label4"></label>
+            </div>
+            <div class="button-wrapper">
+                <a href="file:///D:/Website/Pages/page5.html"><button id="btn5"></button></a> <!-- Link to Page 5 -->
+                <label for="btn5" id="label5"></label>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Setting dynamic content using JavaScript
+        document.getElementById('main-heading').textContent = 'Zjednoczone Krulectwo Dzikih Knuruw';
+        document.getElementById('sub-heading').textContent = 'Pik Jor Pojszyn';
+
+        document.getElementById('label1').textContent = 'Piwnica Kusiowej';
+        document.getElementById('label2').textContent = 'Dach Gomuły';
+        document.getElementById('label3').textContent = 'Finlandia';
+        document.getElementById('label4').textContent = 'Bydgoszcz';
+        document.getElementById('label5').textContent = '18+ :3';
+    </script>
+</body>
+</html>
